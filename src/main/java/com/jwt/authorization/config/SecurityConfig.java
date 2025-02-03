@@ -29,6 +29,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll() // Allow public access to auth endpoints
+                .requestMatchers("/api/users/register").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN") // Restrict access to admin endpoints
                 .requestMatchers("/api/user/**").hasRole("USER") // Restrict access to user endpoints
                 .anyRequest().authenticated()
